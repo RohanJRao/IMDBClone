@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
             results.forEach(result => {
                 const card = document.createElement('div');
                 card.classList.add('card', 'searchResultItem', 'col-8');
-                card.style.marginTop = "10px";
+                card.style = "margin-top:10px;padding:25px;background-color: #352f2f;color:#fff";
                 card.innerHTML = `
                     <div class="row g-0">
                         <div class="col-md-2">
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                     <h5 class="card-title" title="${result.Title}">${result.Title}</h5>
                                 </a>
                                 <p class="card-text">${result.Year}</p>
-                                <button data-mdb-ripple-unbound="true" data-mdb-ripple-duration="0" class="btn btn-primary btn-sm favouriteBtn" data-movie='${JSON.stringify(result)}'>Add to Favorite</button>
+                                <button class="btn favBtn favouriteBtn" data-mdb-ripple-unbound="true" data-mdb-ripple-duration="0" data-movie='${JSON.stringify(result)}'>Add to Favorite</button>
                             </div>
                         </div>
                     </div>
@@ -68,6 +68,11 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!favourites.some(favMovie => favMovie.imdbID === id)) {
                 favourites.push(movie);
                 localStorage.setItem('favourites', JSON.stringify(favourites));
+                const snackbar = document.getElementById('AddFavSnackbar');
+                snackbar.style.visibility = 'visible';
+                setTimeout(() => {
+                    snackbar.style.visibility = 'hidden';
+                }, 3000);
             }
         }
     });

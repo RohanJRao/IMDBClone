@@ -34,3 +34,18 @@ body {
     color: rgb(12, 12, 10);
     background-color: rgb(153 153 3);
 }
+
+.snackbar {
+    visibility: hidden;
+    min-width: 200px;
+    background-color: rgb(192 192 93);
+    color: #3a392a;
+    text-align: center;
+    border-radius: 10px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+}

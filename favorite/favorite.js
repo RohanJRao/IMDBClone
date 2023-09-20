@@ -1,6 +1,7 @@
 const favouritesList = document.getElementById('favoriteMovieContainer');
 let favourites = JSON.parse(localStorage.getItem('favourites')) || [];
 
+//get movie data from api
 async function getData(movieID) {
     const result = await fetch(`https://www.omdbapi.com/?i=${movieID}&apikey=948c321b`);
     const movieDetails = await result.json();
@@ -10,7 +11,7 @@ async function getData(movieID) {
 async function displayFavourites() {
     favouritesList.innerHTML = '';
     for (const movie of favourites) {
-        const movieDetails = await getData(movie.imdbID);
+        const movieDetails = await getData(movie.imdbID); //get movie details
         const listItem = document.createElement('div');
         listItem.classList.add('favouriteListItem');
         listItem.innerHTML = `
@@ -22,7 +23,7 @@ async function displayFavourites() {
                     <div class="col-md-6">
                         <div class="card-body">
                             <h4 class="card-title" style="font-weight:bold;color:#ff6a00;">${movieDetails.Title}</h4>
-                            <p class="card-text"><small class="text-muted">Year: ${movieDetails.Year}</small></p>
+                            <p class="card-text"><small>Year: ${movieDetails.Year}</small></p>
                             <p class="card-text">Plot: ${movieDetails.Plot}</p>
                             <p class="card-text">Actors: <span style="font-weight:bold;">${movieDetails.Actors}<span></p>
                             <p class="card-text">Director: ${movieDetails.Director}</p>
@@ -42,6 +43,11 @@ document.addEventListener('click', async function (event) {
         const id = event.target.dataset.id;
         favourites = favourites.filter(item => item.imdbID !== id);
         localStorage.setItem('favourites', JSON.stringify(favourites));
+        const snackbar = document.getElementById('removeFavSnackbar');
+        snackbar.style.visibility = 'visible';
+        setTimeout(() => {
+            snackbar.style.visibility = 'hidden';
+        }, 3000);
         displayFavourites();
     }
 });
