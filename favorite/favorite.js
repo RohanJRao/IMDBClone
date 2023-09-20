@@ -27,7 +27,7 @@ async function displayFavourites() {
                             <p class="card-text">Plot: ${movieDetails.Plot}</p>
                             <p class="card-text">Actors: <span style="font-weight:bold;">${movieDetails.Actors}<span></p>
                             <p class="card-text">Director: ${movieDetails.Director}</p>
-                            <button class="btn btn-danger btn-sm removeBtn" data-id="${movieDetails.imdbID}">Remove</button>
+                            <button class="btn btn-danger btn-sm removeBtn" data-mdb-ripple-unbound="true" data-mdb-ripple-duration="0" data-id="${movieDetails.imdbID}">Remove</button>
                         </div>
                     </div>
                 </div>
