@@ -1,0 +1,36 @@
+body {
+    background-color: #99a47045;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+}
+
+.searchResults {
+    display: flex;
+    height: 300px;
+    text-overflow: ellipsis;
+}
+
+.IMDBheader {
+    font-size: 3rem;
+    color: rgb(241, 241, 17);
+    background-color: #120f0f;
+    padding-bottom: 10px;
+}
+
+.btn:focus {
+    box-shadow: none;
+}
+
+.favBtn {
+    border-radius: 10px;
+    height: 40px;
+    margin-top: 20px;
+    color: #000;
+    font-weight: bold;
+    background: rgb(192 192 93);
+}
+
+.favBtn:hover {
+    color: rgb(12, 12, 10);
+    background-color: rgb(153 153 3);
+}
